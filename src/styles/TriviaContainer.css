@@ -1,0 +1,15 @@
+.trivia-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.trivia-container-text {
+  text-align: center;
+}
+
+.trivia-category-cards {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
