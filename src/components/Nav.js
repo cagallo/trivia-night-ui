@@ -1,16 +1,24 @@
 import React from 'react';
+import '../styles/Nav.css';
+import { Link, NavLink } from 'react-router-dom';
+import logo from '../cropped-trivia.png';
 
 const Nav = ( {location} ) => {
-    // let navLink;
-    // if (location === 'form') {
-    //   navLink = <Link className="landing-page-link" to="/"><h2>Return Home</h2></Link>
-    // } else {
-    //   navLink = <Link className="form-link" to="/form"><h2>Add a New Question</h2></Link>
-    // }
+    let navLink;
+    if (location === 'home') {
+      navLink = <Link className="form-link" to="/form"><h2>Add a New Question</h2></Link>
+    }
+    const renderDirections = location === 'home' ? <h3 className='directions'>Please choose a category or click "All Categories"</h3> : null;
+    
     return (
       <nav className="navbar">
-        <h1>Trivia Night</h1>
-        {/* {navLink} */}
+        <Link className="logo-link" to="/">
+          <img className="logo" src={logo} alt="Trivia Night logo"/>
+        </Link>
+        <div className='nav-directions'>
+          {renderDirections}
+        </div>
+        {navLink}
       </nav>
     )
   }
