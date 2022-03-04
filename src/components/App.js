@@ -3,20 +3,26 @@ import '../styles/App.css';
 import TriviaContainer from './TriviaContainer';
 import Nav from './Nav';
 import TriviaGameView from './TriviaGameView';
-import { Route } from 'react-router-dom';
+import Form from './Form'
+import { Route, Switch } from 'react-router-dom';
 
 
 const App = () => {
   return (
-    <section className='app'>
-      <Nav />
-      <Route path="/:category" render={({ match }) => {
+    <section className='App'>
+      <Switch>
+        <Route exact path="/">
+          <Nav location="home"/>
+          <TriviaContainer />
+        </Route>
+        <Route exact path='/form' render={({ match }) => {
+         return [<Nav location="form" key={match + '-nav'}/>, <Form key={match + '-trivia-form'}/>]
+        }} />
+        <Route exact path="/:category" render={({ match }) => {
         console.log(match)
-        return <TriviaGameView category={match.params.category} />;
-      }} />
-      <Route exact path="/">
-        <TriviaContainer />
-      </Route>
+        return [<Nav location="game" key={match + '-nav'}/>, <TriviaGameView category={match.params.category}  key={match + '-trivia-category'}/>]
+        }} />
+      </Switch>
     </section>
   )
 }
