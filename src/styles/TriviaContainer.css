@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
 .trivia-container {
   display: flex;
   flex-direction: column;
+  color: white;
+  width: 80%;
 }
 
 .trivia-container-text {
   text-align: center;
+  font-style: 'Roberto';
+  font-size: 28px;
 }
 
 .trivia-category-cards {
+  margin-top: 3%;
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
