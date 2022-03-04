@@ -4,7 +4,7 @@ import '../styles/CategoryCard.css';
 const CategoryCard = ({ categoryName }) => {
   return (
     <section className="category-card">
-      <h3>{categoryName}</h3>
+      <h4 className="category-name-card">{categoryName}</h4>
     </section>
   )
 }
