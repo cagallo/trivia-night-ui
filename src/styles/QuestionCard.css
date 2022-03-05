@@ -23,18 +23,17 @@
   font-size: 22px;
 }
 
-.submit-answer-button {
+/* .submit-answer-button {
   width: 20%;
   border-radius: 20px;
   background-color: #fbfbfab3;
-  color: black;
   font-size: large;
 }
 
 .submit-answer-button:hover {
   background-color: grey;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
+} */
 
 .answer-button-container {
   display: flex;

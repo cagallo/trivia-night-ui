@@ -8,71 +8,123 @@ class TriviaGameView extends Component {
     super(props);
     this.state = {
       selectedCategory: [],
-      currentIndex: 0,
-      error: '',
-      score: 0
-      // possibleAnswers: [],
-      // correctAnswer: '',
-      // question: ''
+      userAnswer: null, 
+      correctAnswer: '',
+      currentIndex: 0,  
+      possibleAnswers: [],       
+      gameOver: false, 
+      score: 0,   
+      disabled: true,
+      shuffledAnswers: []
     }
   }
 
   async componentDidMount() {
-    console.log(this.props.category);
-    console.log('we mounted')
-    const category = this.props.category;
+    let category = this.props.category;
+    if (category === 'User Generated Questions') {
+       category = 'User Generated Question';
+    }
     try {
-      const data = (category !== 'All Categories') ? await apiCalls.getQuestionsByCategory(category) : await apiCalls.getAllQuestions();
-      console.log(data)
+      let data = (category !== 'All Categories') ? await apiCalls.getQuestionsByCategory(category) : await apiCalls.getAllCategories();
       let questions = data;
-      console.log(questions)
-      this.setState({ selectedCategory: questions, currentIndex: 1 })
-      // this.loadGame();
+
+      //remove
+      //questions = questions.splice(5, 3)
+
+      this.setState({ selectedCategory: questions })
+      this.startGame();
     }
     catch (error) {
       this.setState({ error: error.message })
     }
   }
 
-  // loadGame = () => {
-  //   const [currentIndex] = this.state;
-  //   const possibleAnswers = shuffle([...this.state.selectedCategory.incorrectAnswers, this.selectedCategory.correctAnswer]);
-  //   this.setState(() => {
-  //     return {
-  //       question: this.state.selectedCategory[currentIndex].question,
-  //       possibleAnswers: possibleAnswers,
-  //       correctAnswer: this.state.selectedCategory.correctAnswer
-  //     }
-  //   })
-  // }
-  // formatQuestion = (questions) => {
-  //   console.log(questions)
-  //   let i = 0;
-  //   const questionCards = questions.map((question) => {
-  //     console.log(question)
-  //     return (
-  //       <QuestionCard
-  //         key={i++}
-  //         question={question.question}
-  //         incorrectAnswers={question.incorrect_answers}
-  //         correctAnswer={question.correct_answer}
-  //         id={question.id}
-  //       />
-  //     )
-  //   })
-    // return (
-    //   <section className='trivia-game-card'>
-    //     {questionCards}
-    //   </section>
-    // )
-  // }
+  startGame = () => {
+    console.log("starting game...")
+    const {currentIndex} = this.state;
+    const question = this.state.selectedCategory[currentIndex];
+    const possibleAnswers = shuffle([...question.incorrect_answers, question.correct_answer]);
+    console.log(possibleAnswers)
+    this.setState(() => {
+      return {
+        question: question.question,
+        possibleAnswers: possibleAnswers,
+        correctAnswer: question.correct_answer
+      }
+    })
+  }
+
+  handleNextQuestion = (correctAnswer) => {
+    console.log('handlenextq')
+    console.log(correctAnswer)
+    const {userAnswer, score} = this.state
+    this.setState({ currentIndex: this.state.currentIndex + 1 })
+    if (userAnswer === correctAnswer) { 
+      this.setState ({
+        score: score + 1
+     })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    console.log(this.state)
+    console.log(prevProps)
+    console.log(prevState)
+    this.state.shuffledAnswers=[]
+    const{currentIndex} = this.state;
+    if (this.state.currentIndex !== prevState.currentIndex 
+      && !(currentIndex === this.state.selectedCategory.length)) {
+        let currentQuestion = this.state.selectedCategory[currentIndex];
+        console.log(currentQuestion)
+      this.setState(() => {
+        return {
+          disabled: true,
+          question: currentQuestion.question,
+          possibleAnswers: shuffle([...currentQuestion.incorrect_answers, currentQuestion.correct_answer]),
+          correctAnswer: currentQuestion.correct_answer          
+        }
+      });
+    }
+  }
+
+  checkAnswer = (answer, shuffledAnswers) => {
+    this.setState({
+      userAnswer: answer,
+      disabled: false,
+      shuffledAnswers: shuffledAnswers
+    })
+  }
+
+  finishGame =() => {
+    if (this.state.currentIndex === this.state.selectedCategory.length - 1) {
+      this.setState({
+        gameOver: true
+      })
+    }
+  }
 
   render() {
-    console.log(this.state.selectedCategory)
+    const currentIndex = this.state.currentIndex;
+    if (currentIndex === this.state.selectedCategory.length) {
+      return (
+        <div>
+          <h1>Game Over. You got {((this.state.score / this.state.selectedCategory.length) * 100).toFixed(1)}% correct!.</h1>
+          <h1>The correct answers for the quiz are:</h1>
+          <ul>
+            {this.state.selectedCategory.map((question, index) => (
+              <h1 className='options'
+                key={index}>
+                  {question.correct_answer}
+              </h1>
+            ))}
+          </ul>
+        </div>
+      )
+    } 
     return (
       <section className='trivia-game-view'>
         <div className='trivia-game-card'>
-          <GameViewContainer questions={this.state.selectedCategory}/>
+          <GameViewContainer score={this.state.score} disabled={this.state.disabled} total={this.state.selectedCategory.length} finishGame={this.finishGame} checkAnswer={this.checkAnswer} handleNextQuestion={this.handleNextQuestion} questions={this.state.selectedCategory} shuffledAnswers={this.state.shuffledAnswers} index={currentIndex}/>
         </div>
       </section>
     )
