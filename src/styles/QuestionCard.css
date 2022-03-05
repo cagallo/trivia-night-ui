@@ -3,11 +3,16 @@
   border: 3px solid black;
   padding: 10px;
   background-color: white;
-  height: 400px;
+  height: 550px;
+  width: 740px;
   display: flex;
   flex-direction: column;
-  /* word-wrap: break-word; */
+  padding: 5%;
+  overflow-x: scroll;
+  word-wrap: break-word;
+  border-radius: 10px;
 }
+
 
 .top-row-answers,
 .bottom-row-answers {
@@ -18,22 +23,30 @@
   font-size: 20px;
 }
 
-.current-question {
-  margin-bottom: 10%;
-  font-size: 22px;
+.question-total {
+  font-size: 20px;
 }
 
-/* .submit-answer-button {
+.current-question {
+  margin-bottom: 10%;
+  font-size: 30px;
+}
+
+.submit-answer-button {
   width: 20%;
   border-radius: 20px;
   background-color: #fbfbfab3;
   font-size: large;
 }
 
+input[type="radio"] {  
+  margin-right: 15px;
+}
+
 .submit-answer-button:hover {
   background-color: grey;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-} */
+} 
 
 .answer-button-container {
   display: flex;
