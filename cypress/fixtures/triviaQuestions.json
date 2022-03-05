@@ -1,0 +1,38 @@
+[
+  {
+  "id": 845,
+  "category": "Sport and Leisure",
+  "correct_answer": "John McEnroe",
+  "incorrect_answers": [
+  "Pete Sampras",
+  "Bjorn Borg",
+  "Ivan Lendl"
+  ],
+  "question": "Which tennis player was famous for the 'You cannot be serious'' outburst?"
+  },
+
+  {
+  "id": 1850,
+  "category": "History",
+  "correct_answer": "Grace Kelly",
+  "incorrect_answers": [
+  "Marylin Monroe",
+  "Hedy Lamarr",
+  "Rita Hayworth"
+  ],
+  "question": "Who was Cary Grant's female lead in the movie 'To catch a thief?"
+  },
+
+  {
+  "id": 1862,
+  "category": "Art and Literature",
+  "correct_answer": "Charles Dickens",
+  "incorrect_answers": [
+  "Thomas Hardy",
+  "James Joyce",
+  "Emily Brontë",
+  "George Elliot"
+  ],
+  "question": "Who wrote \"A Christmas Carol\"?"
+  }
+]
