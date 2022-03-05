@@ -2,9 +2,7 @@ import React from "react";
 import '../styles/QuestionCard.css';
 
 const QuestionCard = ({question, allQuestions, disabled, shuffledAnswers, correctAnswer, id, checkAnswer, handleNextQuestion, finishGame, index, total, score }) => {
-  console.log('questioncard')
   const possibleAnswers = [...shuffledAnswers, correctAnswer];
-    console.log(disabled)
   
   return (
     <section className="single-question-card" id={id}>
@@ -44,7 +42,7 @@ const QuestionCard = ({question, allQuestions, disabled, shuffledAnswers, correc
       <div className="answer-button-container">
       <button disabled={disabled} className="submit-answer-button" onClick={() => {
           console.log('clicked')
-          //handleNextQuestion(correctAnswer)
+          handleNextQuestion(correctAnswer)
       }}>Submit</button>
       </div>
     </section>
