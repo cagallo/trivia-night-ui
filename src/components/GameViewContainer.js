@@ -39,22 +39,7 @@ const GameViewContainer = (props) => {
       total={props.total}
     />
   )
-
-
-  // let i = 0;
-  // console.log(props.questions)
-  // const questionCards = props.questions.map((question) => {
-  //    console.log(question)
-  //   return (
-  //     <QuestionCard
-  //       key={i++}
-  //       question={question.question}
-  //       incorrectAnswers={question.incorrect_answers}
-  //       correctAnswer={question.correct_answer}
-  //       id={question.id}
-  //     />
-  //   )
-  // })
+  
   return (
     <section className='game-view-container'>
       {questionCard}
