@@ -4,7 +4,7 @@ import '../styles/TriviaContainer.css';
 import { Link } from 'react-router-dom';
 
 const TriviaContainer = () => {
-  const categories = ['All Categories', 'Food and Drink', 'Geography', 'General Knowledge', 'History', 'Art and Literature', 'Movies', 'Music', 'Science', 'Society and Culture', 'Sports and Leisure', 'User Generated Questions']
+  const categories = ['All Categories', 'Food and Drink', 'Geography', 'General Knowledge', 'History', 'Art and Literature', 'Film and TV', 'Music', 'Science', 'Society and Culture', 'Sport and Leisure', 'User Generated Questions']
   let i = 0;
   const triviaCategories = categories.map((category) => {
     return <Link key={i++} to={`/${category}`}>
@@ -17,8 +17,6 @@ const TriviaContainer = () => {
 
   return (
     <section className="trivia-container">
-      <div className='trivia-container-text'>
-      </div>
       <div className='trivia-category-cards'>
       {triviaCategories}
       </div>
