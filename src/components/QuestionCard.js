@@ -6,7 +6,7 @@ const QuestionCard = ({question, allQuestions, disabled, shuffledAnswers, correc
   
   return (
     <section className="single-question-card" id={id}>
-      <span>{`Question ${index + 1} of ${total}`}</span>
+      <span className="question-total">{`Question ${index + 1} of ${total}`}</span>
       <h3 className="current-question">{question}</h3>
       <div className="possible-answers-container">
         <div className="top-row-answers">
@@ -18,9 +18,11 @@ const QuestionCard = ({question, allQuestions, disabled, shuffledAnswers, correc
           <label>{possibleAnswers[0]}</label>
           </div>
           <div className="top-right">
-          <input type="radio" id="possibleAnswer2" name="answer-button" value="possibleAnswer2" onClick={() => {
-            checkAnswer(possibleAnswers[1], shuffledAnswers);
-          }}></input>
+            <div className="radio-button">
+            <input type="radio" id="possibleAnswer2" name="answer-button" value="possibleAnswer2" onClick={() => {
+              checkAnswer(possibleAnswers[1], shuffledAnswers);
+            }}></input>
+            </div>
           <label>{possibleAnswers[1]}</label>
           </div>
         </div>
