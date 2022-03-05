@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../styles/Form.css';
+import { apiCalls } from '../apiCalls';
 
 class Form extends Component {
   constructor() {
@@ -13,6 +14,20 @@ class Form extends Component {
 
   handleFormChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  submitNewQuestion = event => {
+    event.preventDefault(); 
+    const newQuestion = {
+      ...this.state // spreading in the title and description
+    }
+    apiCalls.postNewQuestion(newQuestion)
+    // this.props.addIdea(newIdea); // using the addIdea method from App that we x`passed as a prop to Form
+    this.clearInputs(); // invoking the method I wrote below to reset the inputs
+  }
+
+  clearInputs = () => {
+    this.setState({ question: '', incorrectAnswers: [], correctAnswer: '' });
   }
 
   render() {
