@@ -1,3 +1,10 @@
+/** 
+ * My function that generates the questions also shuffles the possible answers, so the 
+ * placement of the correct answer changes when you run the test again. Due to this,
+ * I could not thoroughly test the message that is generated after you finish the game.
+ */
+
+
 describe('Trivia game user flow', () => {
   
   it('should display single question card and allow user to click radio button and submit answer', () => {
@@ -43,8 +50,11 @@ describe('Trivia game user flow', () => {
     .click()
     .trigger('change')
     .get('.submit-answer-button').click()
-    .get('.game-over-msg').contains('Game Over. You got 0.0% correct!')
     .get('.correct-answers-msg').contains('The correct answers for the game are:')
     .get('.options').contains('John McEnroe')
+    .get('.logo-link').click()
+    cy.location().should((loc) => {
+      expect(loc.href).to.eq('http://localhost:3000/')
+    })
   })
 });
