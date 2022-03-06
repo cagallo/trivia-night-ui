@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Nav.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../cropped-trivia.png';
 
 const Nav = ( {location} ) => {
