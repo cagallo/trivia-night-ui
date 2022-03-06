@@ -10,3 +10,12 @@
   height: 40%;
   width: 40%;
 }
+
+.game-over-msg, 
+.correct-answers-msg,
+.options,
+.navigate-home {
+  color:white; 
+  font-size: 24px;
+
+}
