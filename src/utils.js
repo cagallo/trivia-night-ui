@@ -11,3 +11,10 @@ export const shuffle = (array) => {
   return array;
   
 }
+
+
+export const handleResponse = (response) => {
+  if (!response.ok) {
+    throw new Error( `${response.status} ${response.statusText}: Unable to load content.`);
+  }
+}

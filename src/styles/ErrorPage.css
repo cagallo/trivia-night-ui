@@ -1,0 +1,10 @@
+.error-404-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.error,
+.message {
+  font-size: xx-large;
+  color: white;
+}

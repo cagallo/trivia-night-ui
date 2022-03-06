@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { apiCalls } from '../apiCalls';
 import GameViewContainer from './GameViewContainer';
+import ErrorPage from './ErrorPage';
 import { shuffle } from '../utils';
+
 
 class TriviaGameView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: '',
       selectedCategory: [],
       userAnswer: null, 
       correctAnswer: '',
@@ -18,23 +21,25 @@ class TriviaGameView extends Component {
       shuffledAnswers: []
     }
   }
-
+  
   async componentDidMount() {
+    console.log('mounted')
     let category = this.props.category;
     if (category === 'User Generated Questions') {
        category = 'User Generated Question';
     }
     try {
-      let data = (category !== 'All Categories') ? await apiCalls.getQuestionsByCategory(category) : await apiCalls.getAllCategories();
-      let questions = data;
-
+      let questions = (category !== 'All Categories') ? await apiCalls.getQuestionsByCategory(category) : await apiCalls.getAllCategories();
+      console.log(questions)
       //remove
-      //questions = questions.splice(5, 3)
+      questions = questions.slice(0, 5)
 
       this.setState({ selectedCategory: questions })
       this.startGame();
     }
     catch (error) {
+      console.log(error)
+      console.log("error")
       this.setState({ error: error.message })
     }
   }
@@ -64,6 +69,7 @@ class TriviaGameView extends Component {
         score: score + 1
      })
     }
+    this.finishGame()
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -104,12 +110,23 @@ class TriviaGameView extends Component {
   }
 
   render() {
+    if (this.state.error) {
+      return (
+      <ErrorPage message={this.state.error}/>
+      )
+    }
+    console.log("rendering")
+    console.log(this.state)
     const currentIndex = this.state.currentIndex;
-    if (currentIndex === this.state.selectedCategory.length) {
+    if (currentIndex > 0 && currentIndex === this.state.selectedCategory.length) {
+      console.log(currentIndex)
+      console.log(this.state.selectedCategory.length)
+      console.log('ran')
+    //if (this.state.gameOver) {
       return (
         <div>
-          <h1>Game Over. You got {((this.state.score / this.state.selectedCategory.length) * 100).toFixed(1)}% correct!.</h1>
-          <h1>The correct answers for the quiz are:</h1>
+          <h1 className='game-over-msg'>Game Over. You got {((this.state.score / this.state.selectedCategory.length) * 100).toFixed(1)}% correct!</h1>
+          <h1 className='correct-answers-msg'>The correct answers for the game are:</h1>
           <ul>
             {this.state.selectedCategory.map((question, index) => (
               <h1 className='options'
@@ -118,6 +135,7 @@ class TriviaGameView extends Component {
               </h1>
             ))}
           </ul>
+          <p>Click on the Trivia Night icon above to choose a new category!</p>
         </div>
       )
     } 
