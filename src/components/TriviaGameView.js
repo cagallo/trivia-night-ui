@@ -3,6 +3,7 @@ import { apiCalls } from '../apiCalls';
 import GameViewContainer from './GameViewContainer';
 import ErrorPage from './ErrorPage';
 import { shuffle } from '../utils';
+import '../styles/TriviaGameView.css'
 
 
 class TriviaGameView extends Component {
@@ -32,7 +33,7 @@ class TriviaGameView extends Component {
       let questions = (category !== 'All Categories') ? await apiCalls.getQuestionsByCategory(category) : await apiCalls.getAllCategories();
       console.log(questions)
       //remove
-      questions = questions.slice(0, 5)
+      questions = questions.slice(0, 2)
 
       this.setState({ selectedCategory: questions })
       this.startGame();
@@ -125,17 +126,17 @@ class TriviaGameView extends Component {
     //if (this.state.gameOver) {
       return (
         <div>
-          <h1 className='game-over-msg'>Game Over. You got {((this.state.score / this.state.selectedCategory.length) * 100).toFixed(1)}% correct!</h1>
-          <h1 className='correct-answers-msg'>The correct answers for the game are:</h1>
-          <ul>
+          <h2 className='game-over-msg'>Game Over. You got {((this.state.score / this.state.selectedCategory.length) * 100).toFixed(1)}% correct!</h2>
+          <h2 className='correct-answers-msg'>The correct answers for the game are:</h2>
+          <ol>
             {this.state.selectedCategory.map((question, index) => (
-              <h1 className='options'
+              <li className='options'
                 key={index}>
-                  {question.correct_answer}
-              </h1>
+                  Question {index + 1} : {question.correct_answer}
+              </li>
             ))}
-          </ul>
-          <p>Click on the Trivia Night icon above to choose a new category!</p>
+          </ol>
+          <p className='navigate-home'>Click on the Trivia Night icon above to choose a new category!</p>
         </div>
       )
     } 
