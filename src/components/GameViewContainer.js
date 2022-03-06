@@ -10,8 +10,9 @@ const GameViewContainer = (props) => {
   if (props.questions.length < 1) {
     return "";
   }
-
+  console.log(props.questions)
   const question = props.questions[index];
+  console.log(question)
   const incorrectAnswers = question.incorrect_answers;
   const correctAnswer = question.correct_answer;
 
