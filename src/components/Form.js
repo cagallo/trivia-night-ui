@@ -7,31 +7,66 @@ class Form extends Component {
     super();
     this.state = {
       question: '',
-      incorrectAnswers: [],
-      correctAnswer: ''
+      incorrect_answers: [],
+      correct_answer: '',
+      posted: false,
+      error: ''
     }
   }
 
   handleFormChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const inputType = event.target.className;
+    if (inputType === 'incorrect-answer-input') {
+      this.setState({
+        incorrect_answers: [...this.state.incorrect_answers, event.target.value]
+      })
+    } else {
+      this.setState({ [event.target.name]: event.target.value });
+    }
   }
 
   submitNewQuestion = async(event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     const newQuestion = {
-      ...this.state // spreading in the title and description
+      ...this.state 
     }
-    console.log(newQuestion)
-    await apiCalls.postNewQuestion(newQuestion)
-    // this.props.addIdea(newIdea); // using the addIdea method from App that we x`passed as a prop to Form
-    this.clearInputs(); // invoking the method I wrote below to reset the inputs
+    delete newQuestion.posted;
+    delete newQuestion.error;
+    
+    try {
+      await apiCalls.postNewQuestion(newQuestion)
+    } 
+    catch(error) {
+      this.setState( {error: error.message} )
+    }
+
+    this.setState({
+      posted: true
+    })
+  
+    setTimeout(() => {
+      this.clearInputs(); 
+    }, 5000)
+    
   }
 
   clearInputs = () => {
-    this.setState({ question: '', incorrectAnswers: [], correctAnswer: '' });
+    this.setState({ question: '', incorrect_answers: [], correct_answer: '', posted: false });
   }
 
   render() {
+    if(this.state.error) {
+      return (
+        <h1>{`${this.state.error}`}</h1>
+      )
+    }
+    if (this.state.posted) {
+      return (
+        <div className="post-sucess">
+          <h1 className="message">{`Your question" ${this.state.question} was created successfully!`}</h1>
+        </div>
+      )
+    }
     return (
       <form>
         <h2 className='add-question-text'>Add a New Question</h2>
@@ -51,11 +86,11 @@ class Form extends Component {
           <div className='question-container'>
           <label className='label-form' htmlFor="incorrect-1">Incorrect Answer 1: </label>
             <input
-              className='question-input'
+              className='incorrect-answer-input'
               type='text'
               placeholder='Incorrect Answer 1'
               name='incorrectAnswers[0]'
-              value={this.state.incorrectAnswers[0]}
+              value={this.state.incorrect_answers[0]}
               onChange={event => this.handleFormChange(event)}
             />
           </div>
@@ -63,11 +98,11 @@ class Form extends Component {
           <div className='question-container'>
           <label className='label-form' htmlFor="incorrect-2">Incorrect Answer 2: </label>
             <input
-              className='question-input'
+              className='incorrect-answer-input'
               type='text'
               placeholder='Incorrect Answer 2'
               name='incorrectAnswers[1]'
-              value={this.state.incorrectAnswers[1]}
+              value={this.state.incorrect_answers[1]}
               onChange={event => this.handleFormChange(event)}
             />  
           </div>
@@ -75,11 +110,11 @@ class Form extends Component {
           <div className='question-container'>
           <label className='label-form' htmlFor="incorrect-3">Incorrect Answer 3: </label>
             <input
-              className='question-input'
+              className='incorrect-answer-input'
               type='text'
               placeholder='Incorrect Answer 3'
               name='incorrectAnswers[2]'
-              value={this.state.incorrectAnswers[2]}
+              value={this.state.incorrect_answers[2]}
               onChange={event => this.handleFormChange(event)}
             />  
           </div>
@@ -87,11 +122,11 @@ class Form extends Component {
           <div className='question-container'>
           <label className='label-form' htmlFor="correct">Correct Answer: </label>
             <input
-              className='question-input'
+              className='correct-answer-input'
               type='text'
               placeholder='Correct Answer'
-              name='correctAnswer'
-              defaultValue={this.state.correctAnswer}
+              name='correct_answer'
+              defaultValue={this.state.correct_answer}
               onChange={event => this.handleFormChange(event)}
             />  
           </div>
@@ -102,7 +137,5 @@ class Form extends Component {
     )
   }
 }
-
-//help 
 
 export default Form;
