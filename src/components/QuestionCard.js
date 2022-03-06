@@ -2,7 +2,7 @@ import React from "react";
 import '../styles/QuestionCard.css';
 
 const QuestionCard = ({question, allQuestions, disabled, shuffledAnswers, correctAnswer, id, checkAnswer, handleNextQuestion, finishGame, index, total, score }) => {
-  const possibleAnswers = [...shuffledAnswers.slice(0, 3), correctAnswer];
+  const possibleAnswers = [...shuffledAnswers, correctAnswer];
   
   return (
     <section className="single-question-card" id={id}>
