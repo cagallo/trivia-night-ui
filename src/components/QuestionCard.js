@@ -2,7 +2,7 @@ import React from "react";
 import '../styles/QuestionCard.css';
 
 const QuestionCard = ({question, allQuestions, disabled, shuffledAnswers, correctAnswer, id, checkAnswer, handleNextQuestion, finishGame, index, total, score }) => {
-  const possibleAnswers = [...shuffledAnswers, correctAnswer];
+  const possibleAnswers = [...shuffledAnswers.slice(0, 3), correctAnswer];
   
   return (
     <section className="single-question-card" id={id}>
@@ -16,7 +16,7 @@ const QuestionCard = ({question, allQuestions, disabled, shuffledAnswers, correc
               console.log('clicked')
               checkAnswer(possibleAnswers[0], shuffledAnswers);
                }}></input>
-               <label>{possibleAnswers[0]}</label>
+               <label className="possible-answer">{possibleAnswers[0]}</label>
           </div>
         </div>
           <div className="top-right">
@@ -25,7 +25,7 @@ const QuestionCard = ({question, allQuestions, disabled, shuffledAnswers, correc
                 checkAnswer(possibleAnswers[1], shuffledAnswers);
               }}></input>
             </div>
-          <label>{possibleAnswers[1]}</label>
+          <label className="possible-answer">{possibleAnswers[1]}</label>
           </div>
         </div>
         <div className="bottom-row-answers">
@@ -34,7 +34,7 @@ const QuestionCard = ({question, allQuestions, disabled, shuffledAnswers, correc
             <input type="radio" id="possibleAnswer3" name="answer-button" value="possibleAnswer3" onClick={() => {
               checkAnswer(possibleAnswers[2], shuffledAnswers);
             }}></input>
-            <label className="bottom-left">{possibleAnswers[2]}</label>
+            <label className="possible-answer">{possibleAnswers[2]}</label>
           </div>
         </div>
         <div className="bottom-right">
@@ -42,7 +42,7 @@ const QuestionCard = ({question, allQuestions, disabled, shuffledAnswers, correc
             <input type="radio" id="possibleAnswer4" name="answer-button" value="possibleAnswer4" onClick={() => {
               checkAnswer(possibleAnswers[3], shuffledAnswers);
             }}></input>
-            <label>{possibleAnswers[3]}</label>
+            <label className="possible-answer">{possibleAnswers[3]}</label>
           </div>
         </div>
       </div>
