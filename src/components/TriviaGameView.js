@@ -24,25 +24,22 @@ class TriviaGameView extends Component {
 	}
   
 	async componentDidMount() {
-		console.log('mounted')
+		console.log('ran componentDidMount')
 		let category = this.props.category
 		if (category === 'User Generated Questions') {
 			category = 'User Generated Question'
 		}
 		try {
 			let questions = (category !== 'All Categories') ? await apiCalls.getQuestionsByCategory(category) : await apiCalls.getAllCategories()
+
 			console.log(questions)
-			/**
-       * TODO
-       */
-			questions = questions.slice(0, 2)
+			//TODO: remove
+			//questions = questions.slice(0, 2)
 
 			this.setState({ selectedCategory: questions })
 			this.startGame()
-		}
-		catch (error) {
-			console.log(error)
-			console.log('error')
+		} catch (error) {
+			console.log('error', error)
 			this.setState({ error: error.message })
 		}
 	}
@@ -63,8 +60,7 @@ class TriviaGameView extends Component {
 	}
 
 	handleNextQuestion = (correctAnswer) => {
-		console.log('handlenextq')
-		console.log(correctAnswer)
+		console.log('running handleNextQuestion')
 		const {userAnswer, score} = this.state
 		this.setState({ currentIndex: this.state.currentIndex + 1 })
 		if (userAnswer === correctAnswer) { 
@@ -76,17 +72,20 @@ class TriviaGameView extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState){
-		console.log(this.state)
-		console.log(prevProps)
-		console.log(prevState)
-		//TODO fix this
+		console.log('ran componentDidUpdate')
+
+		//TODO: fix this
 		this.state.shuffledAnswers=[]
-		const{currentIndex} = this.state
-		if (this.state.currentIndex !== prevState.currentIndex 
-      && !(currentIndex === this.state.selectedCategory.length)) {
+		const { currentIndex } = this.state
+		if (currentIndex !== prevState.currentIndex 
+      && currentIndex !== this.state.selectedCategory.length) {
+
 			let currentQuestion = this.state.selectedCategory[currentIndex]
 			console.log(currentQuestion)
+
 			this.setState(() => {
+				let testPossAnswers = shuffle([...currentQuestion.incorrect_answers, currentQuestion.correct_answer])
+				console.log(testPossAnswers)
 				return {
 					disabled: true,
 					question: currentQuestion.question,
@@ -98,6 +97,7 @@ class TriviaGameView extends Component {
 	}
 
 	checkAnswer = (answer, shuffledAnswers) => {
+		console.log('ran checkAnswer')
 		this.setState({
 			userAnswer: answer,
 			disabled: false,
@@ -106,6 +106,7 @@ class TriviaGameView extends Component {
 	}
 
 	finishGame =() => {
+		console.log('ran finish game')
 		if (this.state.currentIndex === this.state.selectedCategory.length - 1) {
 			this.setState({
 				gameOver: true
@@ -114,19 +115,15 @@ class TriviaGameView extends Component {
 	}
 
 	render() {
+		console.log('ran render')
 		if (this.state.error) {
 			return (
 				<ErrorPage message={this.state.error}/>
 			)
 		}
-		console.log('rendering')
-		console.log(this.state)
+
 		const currentIndex = this.state.currentIndex
 		if (currentIndex > 0 && currentIndex === this.state.selectedCategory.length) {
-			console.log(currentIndex)
-			console.log(this.state.selectedCategory.length)
-			console.log('ran')
-			//if (this.state.gameOver) {
 			return (
 				<div>
 					<h2 className='game-over-msg'>Game Over. You got {((this.state.score / this.state.selectedCategory.length) * 100).toFixed(1)}% correct!</h2>
@@ -142,11 +139,21 @@ class TriviaGameView extends Component {
 					<p className='navigate-home'>Click on the Trivia Night icon above to choose a new category!</p>
 				</div>
 			)
-		} 
+		}
+
 		return (
 			<section className='trivia-game-view'>
 				<div className='trivia-game-card'>
-					<GameViewContainer score={this.state.score} disabled={this.state.disabled} total={this.state.selectedCategory.length} finishGame={this.finishGame} checkAnswer={this.checkAnswer} handleNextQuestion={this.handleNextQuestion} questions={this.state.selectedCategory} shuffledAnswers={this.state.shuffledAnswers} index={currentIndex}/>
+					<GameViewContainer 
+						score={this.state.score} 
+						disabled={this.state.disabled} 
+						total={this.state.selectedCategory.length} 
+						finishGame={this.finishGame} 
+						checkAnswer={this.checkAnswer} 
+						handleNextQuestion={this.handleNextQuestion} 
+						questions={this.state.selectedCategory} 
+						shuffledAnswers={this.state.shuffledAnswers} 
+						index={currentIndex}/>
 				</div>
 			</section>
 		)
