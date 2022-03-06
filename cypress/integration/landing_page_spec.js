@@ -18,5 +18,5 @@ describe('Trivia Night landing page user flow', () => {
       .get('.category-card').contains('Society and Culture')
       .get('.category-card').contains('Sport and Leisure')
       .get('.category-card').contains('User Generated Questions')
-  });
-
+  })
+});
