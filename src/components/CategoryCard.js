@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/CategoryCard.css'
+import PropTypes from 'prop-types'
 
 const CategoryCard = ({ categoryName }) => {
 	return (
@@ -10,3 +11,7 @@ const CategoryCard = ({ categoryName }) => {
 }
 
 export default CategoryCard
+
+CategoryCard.propTypes = {
+	categoryName: PropTypes.string
+}
