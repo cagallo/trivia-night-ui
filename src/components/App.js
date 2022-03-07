@@ -12,7 +12,6 @@ const App = () => {
 		<section className='App'>
 			<Switch>
 				<Route exact path="/">
-					{/* {this.state.error && <h2 className="landing-page-error-message">{this.state.error}</h2>} */}
 					<Nav location="home"/>
 					<TriviaContainer />
 				</Route>
@@ -20,7 +19,6 @@ const App = () => {
 					return [<Nav location="form" key={match + '-nav'}/>, <Form key={match + '-trivia-form'}/>]
 				}} />
 				<Route exact path="/:category" render={({ match }) => {
-					console.log(match)
 					return [<Nav location="game" key={match + '-nav'}/>, <TriviaGameView category={match.params.category}  key={match + '-trivia-category'}/>]
 				}} />
 				<Route>
