@@ -1,7 +1,7 @@
 # ❓ Trivia Night ❓
 
 
-Welcome to Trivia Night--your go-to application to test your knowledge on a variety of subjects. Not really to make your grand debut at the brewery trivia night? You're in luck--Trivia Night will help hone those trivia skills and prepare you to become a trivia champion!
+Welcome to Trivia Night--your go-to application to test your knowledge on a variety of subjects. Not ready to make your grand debut at the brewery trivia night? You're in luck--Trivia Night will help hone and broaden your knowledge skills to prepare you for your future as a trivia champion!
 
 Deployed Application here: [Trivia Night](https://trivia-night-ui.herokuapp.com/)
 
@@ -21,9 +21,13 @@ Deployed Application here: [Trivia Night](https://trivia-night-ui.herokuapp.com/
 
 ## Overview <a name="overview"></a>
 
-Trivia Night is a Mod 3 project at the Turing School of Software and Design that was built with `create-react-app` and tested using Cypress. React, React Router and data pulled from a backend server I created were utilized to display an assortment of different trivia catergories on page load. The user can select a category by clicking on the button with its respective name. The user is then allowed to begin the trivia game (20 questions). The user may also add a new question to the trivia database under the category "User Generated Questions". They may then click on that category on the landing page to see their added question possibly appear in the trivia questions (once there are more than 20 questions in this category, the user may not see their question because they are being shuffled on each API call).  
+Trivia Night is a Mod 3 project at the Turing School of Software and Design that was built with `create-react-app` and tested using Cypress. React, React Router and data pulled from a backend server I created were utilized to display an assortment of different trivia catergories on page load. The user can select a category by clicking on the button with its respective name. The user is then allowed to begin the trivia game (20 questions). The user may also add a new question to the trivia database under the category "User Generated Questions". They may then click on that category on the landing page to see their own question appear in the trivia questions (once there are more than 20 questions in this category, the user may not see their question because they are being shuffled on each API call).  
 
-I was given a 6 day timeframe to create the frontend and backend for this project. I wanted to create a backend for this project to gain more experience with servers/databases and because the original API was very slow and timed out quite a bit. This project is our end-of-mod Showcase Project, so I thought it was important to push myself with technologies such as Express.js, Node.js, Knex.js and PostgreSQL. 
+I was given a 6 day timeframe to create the frontend and backend for this project. I wanted to create a backend for this project for two reasons: 
+1. to gain more experience with servers/databases <br>
+2. the original API was very slow and timed out quite a bit <br>
+
+This project is our end-of-mod Showcase Project, so I thought it was important to push myself with technologies such as Express.js, Node.js, Knex.js and PostgreSQL. 
 
 - Project Spec here: [Showcase](https://frontend.turing.edu/projects/module-3/showcase.html)
 
@@ -33,7 +37,7 @@ I was given a 6 day timeframe to create the frontend and backend for this projec
 
 ## Installation Instructions <a name="installationInstructions"></a>
 
-1. Clone down [this repository](https://github.com/ectweitmann/trivia-night-ui)
+1. Clone down [this repository](https://github.com/cagallo/trivia-night-ui)
 2. Run `npm install`
 3. Run `npm start` in your terminal
 4. Go to http://localhost:3000/ and you should see the website
@@ -43,7 +47,7 @@ I was given a 6 day timeframe to create the frontend and backend for this projec
 
 - Continue to gain competency with React fundamentals, Router and Cypress testing
 - Practice building a server in Express 
-- Successful populate a PostgreSQL database using Knex query builder
+- Successfully populate a PostgreSQL database using Knex query builder
 - Learn how to deploy both frontend and backend on Heroku 
 - Gain an understanding of what is it like to create both the frontend and the backend of an application
 
@@ -57,11 +61,11 @@ Once a user clicks on a category, they are presented with a trivia game featurin
 
 ![landing-to-gameview](https://user-images.githubusercontent.com/78453792/156971553-5a5ff467-8388-4ede-aee1-4c9d9184e02b.gif)
 
-When the game is over, the user is able see their final score(percentage) and see a list of correct answers.
+Once the game is over, the user is able see their final score(percentage) and see a list of correct answers.
 
 ![end-of-game-view (1)](https://user-images.githubusercontent.com/78453792/156971874-7b8ab558-93ee-48c5-8bfe-793e9a203be1.gif)
 
-If the user would like to add their own question to the database, they are able to click on the 'Add a New Question' button which will lead them to a form that they can fill out with their own question and answers(both correct and incorrect[3]). The will get a message saying that the question was submitted successfully once they click the 'submit' button (if there are no errors).
+If the user would like to add their own question to the database, they can click on the 'Add a New Question' button which will lead them to a form that they can fill out with their own question and answers(both correct and incorrect[3]). They will get a message saying that their question was submitted successfully once they click the 'submit' button (if there are no errors).
 
 ![form-input-min](https://user-images.githubusercontent.com/78453792/156971676-2bc65cc6-30ef-4ed6-9d48-ee351cc68e60.gif)
 
@@ -71,7 +75,7 @@ They can then choose the category 'User Generated Questions' on the landing page
 
 ## Code Architecture <a name="codeArchitecture"></a>
 
-The React architecture is based on two class components (TriviaGameView.js, Form.js) and five functional components (App.js, Nav.js, ErrorPage.js, GameViewContainer.js, TriviaContainer.js, CategoryCard.js, QuestionCard.js). The class components hold state and are in charge of the network requests, while the functional components render information passed down as props.
+The React architecture is based on two class components (TriviaGameView.js, Form.js) and seven functional components (App.js, Nav.js, ErrorPage.js, GameViewContainer.js, TriviaContainer.js, CategoryCard.js, QuestionCard.js). The class components hold state and are in charge of the network requests, while the functional components render information passed down as props.
 
 ## Technologies Used <a name="techUsed"></a>
 
@@ -112,13 +116,13 @@ Example of a successful test:
 
 ## Project Challanges <a name="projectChallanges"></a>
 
-- Some Challenging aspects of this project were:
+- Some challenging aspects of this project were:
 
     - Connecting Express server to PostgresSQL database using Knex
     - Deploying app using Heroku Postgres
-    - Maintaining game state without hooks or Contect API 
+    - Managing state without hooks or Contect API 
 
-This project was the most challanging project I've experienced to date--I'm still new to PostgreSQL and Knex so there were often hiccups when implementing those technologies. The [source API](https://trivia.willfry.co.uk/) was also very slow and it took a lot of time to even write the files to my local machine (when it didn't timeout mid-download!). I was also extremely challenged with a more complicated React architecture and wish that I would have had more time to implement hooks and GSM with the Context API.
+This project was the most challanging project I've experienced to date--I'm still new to PostgreSQL and Knex so there were often hiccups when I was implementing those technologies. The [source API](https://trivia.willfry.co.uk/) was also very slow and it took a lot of time to even write the files to my local machine (and that's when it didn't timeout mid-download!). I also struggled with the complexities of a more complicated React architecture and wish that I would have had more time to implement hooks and GSM with the Context API.
 
 ## Project Wins <a name="projectWins"></a>
 
@@ -132,7 +136,7 @@ This project was the most challanging project I've experienced to date--I'm stil
 
 ## Future Iterations <a name="futureIterations"></a>
 
-- A login page with authorization for users where they could keep track of their progress as a trivia master!
+- A login page with authorization for users so that they could keep track of their progress as a trivia master!
 - Add responsive design so users can play on their phone
 - Would like to implement GSM and hooks 
 - Would like to have a hall of fame page for high scorers
