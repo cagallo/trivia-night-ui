@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import '../styles/Form.css'
 import { apiCalls } from '../apiCalls'
+import ErrorPage from './ErrorPage'
 
 class Form extends Component {
 	constructor() {
@@ -51,9 +52,9 @@ class Form extends Component {
 	}
 
 	render() {
-		if(this.state.error) {
+		if (this.state.error) {
 			return (
-				<h1>{`${this.state.error}`}</h1>
+				<ErrorPage message={this.state.error}/>
 			)
 		}
 		if (this.state.posted) {
