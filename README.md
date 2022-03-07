@@ -147,6 +147,8 @@ This project was the most challanging project I've experienced to date--I'm stil
 
 - [Chez Gallo](https://github.com/cagallo)
 
+- PR Review: [Thomas Nguyen](https://github.com/tommi-t-nguyen)
+
 - Project Manager: [Robbie Jaeger](https://github.com/robbiejaeger)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
