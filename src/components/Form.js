@@ -60,7 +60,7 @@ class Form extends Component {
 		if (this.state.posted) {
 			return (
 				<div className="post-success">
-					<h1 className="message">{`Your question:\n "${this.state.question}" was created successfully!`}</h1>
+					<h1 className="message">{`Your question: "${this.state.question}" was created successfully!`}</h1>
 				</div>
 			)
 		}

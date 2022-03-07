@@ -19,5 +19,5 @@ const ErrorPage = (props) => {
 export default ErrorPage
 
 ErrorPage.propTypes = {
-	message: PropTypes.string
+	message: PropTypes.object
 }

@@ -27,10 +27,10 @@ export default GameViewContainer
 
 GameViewContainer.propTypes = {
 	index: PropTypes.number,
-	currentQuestion: PropTypes.string,
-	totalQuestions: PropTypes.array,
+	currentQuestion: PropTypes.object,
+	totalQuestions: PropTypes.number,
 	shuffledAnswers: PropTypes.array,
-	submitBtnDisabled: PropTypes.boolean,
+	submitBtnDisabled: PropTypes.bool,
 	setAnswer: PropTypes.func,
 	handleNextQuestion: PropTypes.func
 }
