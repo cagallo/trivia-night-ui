@@ -70,12 +70,11 @@ const QuestionCard = (props) => {
 export default QuestionCard
 
 QuestionCard.propTypes = {
-	currentQuestion: PropTypes.string,
+	currentQuestion: PropTypes.object,
 	shuffledAnswers: PropTypes.array,
 	index: PropTypes.number,
 	totalQuestions: PropTypes.number,
 	setAnswer: PropTypes.func, 
-	submitBtnDisabled: PropTypes.func,
+	submitBtnDisabled: PropTypes.bool,
 	handleNextQuestion: PropTypes.func
-
 }
