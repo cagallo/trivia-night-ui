@@ -33,7 +33,7 @@ class Form extends Component {
 			await apiCalls.postNewQuestion(userQuestion)
 		} 
 		catch(error) {
-			this.setState( {error: error.message} )
+			this.setState( {error: error} )
 		}
 
 		this.setState({
