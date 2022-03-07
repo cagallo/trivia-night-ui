@@ -93,10 +93,10 @@ class TriviaGameView extends Component {
 					<h2 className='correct-answers-msg'>The correct answers for the game are:</h2>
 					<ul>
 						{this.state.allQuestions.map((question, index) => (
-							<li className='options'
+							<p className='options'
 								key={index}>
                   Question {index + 1} : {question.correct_answer}
-							</li>
+							</p>
 						))}
 					</ul>
 					<p className='navigate-home'>Click on the Trivia Night icon above to choose a new category!</p>
