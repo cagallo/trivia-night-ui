@@ -6,7 +6,7 @@
 
 
 describe('Trivia game user flow', () => {
-  
+  console.log('ran')
 	it('should display single question card and allow user to click radio button and submit answer', () => {
 		cy.intercept('https://trivia-night-api-2110.herokuapp.com/api/v1/questions/all', { fixture: 'triviaQuestions.json' })
 		cy.visit('http://localhost:3000')
