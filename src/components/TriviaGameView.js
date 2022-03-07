@@ -91,14 +91,29 @@ class TriviaGameView extends Component {
 				<div>
 					<h2 className='game-over-msg'>Game Over. You got {((this.state.score / this.state.allQuestions.length) * 100).toFixed(1)}% correct!</h2>
 					<h2 className='correct-answers-msg'>The correct answers for the game are:</h2>
-					<ul>
+					<table className="options">
+						<tr>
+							<td>Number</td>
+							<th>Question</th>
+							<th>Answer</th>
+						</tr>
 						{this.state.allQuestions.map((question, index) => (
-							<p className='options'
+							<tr key={index}>
+								<td>{index + 1}</td>
+								<td>{question.question}</td>
+								<td>{question.correct_answer}</td>
+							</tr>
+						))}
+					</table>
+					{/* <ul>
+						{this.state.allQuestions.map((question, index) => (
+							
+              <p className='options'
 								key={index}>
-                  Question {index + 1} : {question.correct_answer}
+                  Question: {question.question}: Correct Answer: {question.correct_answer}
 							</p>
 						))}
-					</ul>
+					</ul> */}
 					<p className='navigate-home'>Click on the Trivia Night icon above to choose a new category!</p>
 				</div>
 			)
