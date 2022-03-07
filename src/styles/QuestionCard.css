@@ -52,9 +52,6 @@ input[type="radio"] {
   display: flex;
   justify-content: center;
 }
-/* .top-row-answers {
-  margin-bottom: 20px;
-} */
 
 .possible-answers-container {
  margin: 5px 25px 10px 25px;
@@ -73,6 +70,3 @@ label {
   display: inline-block;
   width: 170px;
 }
-/* .possible-answers {
-  display: flex;
-} */ 
