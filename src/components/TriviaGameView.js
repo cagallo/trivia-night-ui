@@ -33,8 +33,6 @@ class TriviaGameView extends Component {
 			questions = (category !== 'All Categories') ? 
 				await apiCalls.getQuestionsByCategory(category) : 
 				await apiCalls.getAllCategories()
-			//TODO: remove
-			//questions = questions.slice(0, 3)
 		} catch (error) {
 			console.log(error)
 			console.log('error', error)
