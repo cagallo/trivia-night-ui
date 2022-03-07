@@ -1,11 +1,11 @@
 /** 
  * My function that generates the questions also shuffles the possible answers, so the 
- * placement of the correct answer changes when you run the test again. Due to this,
+ * placement of the correct answer changes when you run the test again(refresh). Due to this,
  * I could not thoroughly test the message that is generated after you finish the game.
  */
 
-
 describe('Trivia game user flow', () => {
+
 	it('should display current question card and allow user to submit checked answer ', () => {
 		cy.intercept('https://trivia-night-api-2110.herokuapp.com/api/v1/questions/all', { fixture: 'triviaQuestions.json' })
 		cy.visit('http://localhost:3000')
@@ -45,7 +45,7 @@ describe('Trivia game user flow', () => {
 		//first question
 		cy.get('.radio-button')
 			.children()
-			.eq(2)
+			.eq(3)
 			.click()
 			.trigger('change')
 			.get('.submit-answer-button').click()
