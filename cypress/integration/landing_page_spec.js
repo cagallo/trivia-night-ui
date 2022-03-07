@@ -3,7 +3,7 @@ describe('Trivia Night landing page user flow', () => {
 	it('should display page title and all of the possible trivia categories', () => {
 		cy.visit('http://localhost:3000')
 			.get('.logo').should('have.attr', 'alt', 'Trivia Night logo')
-			.get('.directions').contains('Please choose a category or click "All Categories"')
+			.get('.directions').contains('Please choose a category or click `All Categories`')
 			.get('.form-link').contains('Add a New Question')
 			.get('.category-card').should('have.length', 12)
 			.get('.category-card').contains('All Categories')
