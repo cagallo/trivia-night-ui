@@ -18,7 +18,6 @@ export const shuffle = (incorrectAnswers, correctAnswer) => {
 
 
 export const handleResponse = async(response) => {
-  
 	if (!response.ok) {
 		throw new Error(`${response.status} ${response.statusText}: Unable to load content.`)
 	}
