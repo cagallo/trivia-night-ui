@@ -1,6 +1,5 @@
 describe('Trivia Night form page user flow', () => {
   
-
 	it('should update input values as form is filled out', () => {
 		cy.visit('http://localhost:3000/form')
 			.get('input[name="question"]').type('What year did the French Revolution begin?').should('have.value', 'What year did the French Revolution begin?')
