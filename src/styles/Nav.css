@@ -1,14 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
-
 h1 {
   font-size: 60px;
   color: white;
-  font-family: 'Roboto';
   margin: 2%;
 }
 
 .nav-directions {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
@@ -16,7 +13,6 @@ h1 {
 .directions {
   color: black;
   text-align: center;
-  font-family: 'Roboto';
   font-size: 28px;
   margin: 0;
   margin-right: 16%;
@@ -39,10 +35,8 @@ h1 {
   margin-left: 5%;
 }
 
-.landing-page-link,
 .form-link {
   color: black;
-  font-family: 'Roboto';
   font-size: 20px;
   border: 10px solid black;
   background-color: #fbfbfa80;
@@ -54,5 +48,4 @@ h1 {
   height: 10%;
   margin-top: 6%;
   margin-right: 7%;
-
 }
