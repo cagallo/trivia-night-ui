@@ -34,10 +34,7 @@ class TriviaGameView extends Component {
 				await apiCalls.getQuestionsByCategory(category) : 
 				await apiCalls.getAllCategories()
 		} catch (error) {
-			console.log(error)
-			console.log('error', error)
 			this.setState({ error: error })
-			console.log(this.state)
 		}
 
 		this.startGame(questions)
