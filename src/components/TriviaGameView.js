@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { apiCalls } from '../apiCalls'
 import GameViewContainer from './GameViewContainer'
 import ErrorPage from './ErrorPage'
+import PropTypes from 'prop-types'
 import '../styles/TriviaGameView.css'
 
 
@@ -32,8 +33,6 @@ class TriviaGameView extends Component {
 			questions = (category !== 'All Categories') ? 
 				await apiCalls.getQuestionsByCategory(category) : 
 				await apiCalls.getAllCategories()
-			//TODO: remove
-			//questions = questions.slice(0, 3)
 		} catch (error) {
 			console.log(error)
 			console.log('error', error)
@@ -128,3 +127,7 @@ class TriviaGameView extends Component {
 }
 
 export default TriviaGameView
+
+TriviaGameView.propTypes = {
+	category: PropTypes.string
+}

@@ -18,17 +18,10 @@ export const shuffle = (incorrectAnswers, correctAnswer) => {
 
 
 export const handleResponse = async(response) => {
-	let result = await response.json()
+  
 	if (!response.ok) {
-		if (result) {
-			if (result.error.detail) {
-				throw new Error( `${result.error.detail}`)
-			}
-			throw new Error( `${result.error}`)
-		}
-		
-		throw new Error( `${response.status} ${response.statusText}: Unable to load content.`)
+		throw new Error(`${response.status} ${response.statusText}: Unable to load content.`)
 	}
 
-	return result
+	return await response.json()
 }

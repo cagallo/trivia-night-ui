@@ -29,4 +29,13 @@ describe('Trivia Night form page user flow', () => {
 			.get('.new-question-button').click()
 			.get('.message').contains('Your question: "What year did the French Revolution begin?" was created successfully!')
 	})
+
+	it('should allow user to return to landing page', () => {
+		cy.visit('http://localhost:3000/form')
+			.get('.logo').should('have.attr', 'alt', 'Trivia Night logo').click()
+		cy.location().should((loc) => {
+			expect(loc.href).to.eq('http://localhost:3000/')
+		})
+	})
+  
 })

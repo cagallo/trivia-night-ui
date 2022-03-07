@@ -1,13 +1,12 @@
 /** 
  * My function that generates the questions also shuffles the possible answers, so the 
- * placement of the correct answer changes when you run the test again. Due to this,
+ * placement of the correct answer changes when you run the test again(refresh). Due to this,
  * I could not thoroughly test the message that is generated after you finish the game.
  */
 
-
 describe('Trivia game user flow', () => {
-  console.log('ran')
-	it('should display single question card and allow user to click radio button and submit answer', () => {
+
+	it('should display current question card and allow user to submit checked answer ', () => {
 		cy.intercept('https://trivia-night-api-2110.herokuapp.com/api/v1/questions/all', { fixture: 'triviaQuestions.json' })
 		cy.visit('http://localhost:3000')
 			.get('.category-card').contains('All Categories').click()
@@ -46,7 +45,7 @@ describe('Trivia game user flow', () => {
 		//first question
 		cy.get('.radio-button')
 			.children()
-			.eq(2)
+			.eq(3)
 			.click()
 			.trigger('change')
 			.get('.submit-answer-button').click()
@@ -57,4 +56,15 @@ describe('Trivia game user flow', () => {
 			expect(loc.href).to.eq('http://localhost:3000/')
 		})
 	})
+
+	it('should allow user to return to landing page', () => {
+		cy.intercept('https://trivia-night-api-2110.herokuapp.com/api/v1/questions?category=History', { fixture: 'historyQuestion.json' })
+		cy.visit('http://localhost:3000')
+			.get('.category-card').contains('History').click()
+			.get('.logo').should('have.attr', 'alt', 'Trivia Night logo').click()
+		cy.location().should((loc) => {
+			expect(loc.href).to.eq('http://localhost:3000/')
+		})
+	})
+  
 })
