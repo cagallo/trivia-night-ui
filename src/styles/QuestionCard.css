@@ -69,3 +69,40 @@ label {
   display: inline-block;
   width: 170px;
 }
+
+
+@media screen and (max-width: 430px) {
+
+  /* .possible-answers-container {
+    display: flex;
+    flex-direction: column;
+  } */
+
+    .top-row-answers,
+    .bottom-row-answers {
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+
+    .single-question-card {
+      width: 363%;
+    }
+
+    .top-right,
+    .bottom-right,
+    .bottom-left,
+    .top-left {
+    margin-bottom: 26px;
+    text-align: left;
+    }
+
+    .question-total {
+    margin-top: 10px;
+    }
+
+    .submit-answer-button {
+    width: 35%;
+    }
+
+}

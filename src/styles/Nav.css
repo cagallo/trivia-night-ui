@@ -7,7 +7,7 @@ h1 {
 .nav-directions {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .directions {
@@ -19,6 +19,7 @@ h1 {
   border: 10px solid black;
   background-color: #fbfbfa80;
   border-radius: 10%;
+  padding: 10px;
 }
 
 .logo {
@@ -40,12 +41,33 @@ h1 {
   font-size: 20px;
   border: 10px solid black;
   background-color: #fbfbfa80;
-  border-radius: 10%;
+  border-radius: 50%;
   padding: 5px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 10%;
+  height: 18%;
   margin-top: 6%;
   margin-right: 7%;
+  margin-left: 500px;
+  width: 50%;
+}
+
+
+@media screen and (max-width: 430px) {
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .directions {
+    margin-right: 23px;
+  }
+
+  .form-link {
+    margin-left: 78px;
+  }
+
 }
