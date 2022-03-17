@@ -61,10 +61,12 @@ button {
 .question-container {
   flex-direction: column;
   width: 90%;
+  margin-left: 10px;
 }
 
 form {
   justify-content: center;
+  height: 42em;
 }
 
 .question-input {
