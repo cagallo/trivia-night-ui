@@ -56,5 +56,32 @@ button {
   font-size: 30px;
 }
 
+@media screen and (max-width: 430px) {
+
+.question-container {
+  flex-direction: column;
+  width: 90%;
+}
+
+form {
+  justify-content: center;
+}
+
+.question-input {
+  width: 100%;
+}
+
+.label-form {
+  margin: 0;
+  text-align: left;
+}
+
+.new-question-button {
+  height: 7%;
+  width: 35%;
+}
+
+}
+
 
 

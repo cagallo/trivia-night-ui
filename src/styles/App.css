@@ -16,5 +16,14 @@
   font-family: 'Roboto'
 }
 
+@media screen and (max-width: 430px) {
+
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
 
 

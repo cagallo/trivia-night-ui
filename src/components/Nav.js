@@ -17,9 +17,9 @@ const Nav = ( { location } ) => {
 				<img className="logo" src={logo} alt="Trivia Night logo"/>
 			</Link>
 			<div className='nav-directions'>
+				{navLink}
 				{renderDirections}
 			</div>
-			{navLink}
 		</nav>
 	)
 }
