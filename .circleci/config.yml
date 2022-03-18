@@ -3,9 +3,9 @@ orbs:
   cypress: cypress-io/cypress@1
 workflows:
   build:
-    jobs:
+    steps:
       - cypress/run:
           group: 'all tests' # name this group "all tests" on the dashboard
           start: 'npm start' # start server before running tests
       - deploy:
-        start: 'git push heroku main'
+          run: 'git push heroku main'
