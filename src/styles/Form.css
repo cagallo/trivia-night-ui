@@ -56,7 +56,7 @@ button {
   font-size: 30px;
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (min-width: 100px) and (max-width: 480px) {
 
 .question-container {
   flex-direction: column;

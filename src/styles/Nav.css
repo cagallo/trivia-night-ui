@@ -53,8 +53,7 @@ h1 {
   width: 50%;
 }
 
-
-@media screen and (max-width: 430px) {
+@media screen and (min-width: 100px) and (max-width: 480px) {
 
   .navbar {
     display: flex;
@@ -76,7 +75,7 @@ h1 {
 
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (min-width: 481px) and (max-width: 820px) {
 
   .logo {
     height: 90%;
@@ -98,3 +97,4 @@ h1 {
   }
 
 }
+

@@ -16,7 +16,7 @@
   font-family: 'Roboto'
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (min-width: 100px) and (max-width: 480px) {
 
   .App {
     display: flex;
