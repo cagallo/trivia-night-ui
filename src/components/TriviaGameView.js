@@ -56,7 +56,8 @@ class TriviaGameView extends Component {
 		this.setState({ 
 			currentIndex: newIndex,
 			currentQuestion: nextQuestion,
-			shuffledAnswers: []
+			shuffledAnswers: [],
+			submitBtnDisabled: true
 		})
 
 		if (userSelectedAnswer === correctAnswer) { 
