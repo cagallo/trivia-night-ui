@@ -17,4 +17,25 @@
 .navigate-home {
   color:white; 
   font-size: 24px;
+  font-weight: bold;
 }
+
+table, th, td {
+  border: 3px solid;
+  padding: 5px;
+}
+
+@media screen and (min-width: 100px) and (max-width: 480px) {
+  
+  .game-over-msg, 
+  .correct-answers-msg,
+  .navigate-home {
+    margin: 5%;
+  }
+
+  table {
+    margin: 3%;
+  }
+
+}
+
