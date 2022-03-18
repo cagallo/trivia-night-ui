@@ -7,7 +7,8 @@ jobs:
       - heroku/install
       - run:
           command:
-            'git push heroku main'
+            'heroku login'
+      - heroku/deploy-via-git
 orbs:
   cypress: cypress-io/cypress@1
   heroku: circleci/heroku@1.2.6
