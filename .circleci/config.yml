@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  deploy:
+  deploy-heroku:
     executor: heroku/default
     steps:
       - checkout
@@ -15,4 +15,6 @@ workflows:
         - cypress/run:
             group: 'all tests' # name this group "all tests" on the dashboard
             start: 'npm start' # start server before running tests
-        - deploy
+        - deploy-heroku:
+            requires:
+              - cypress/run
