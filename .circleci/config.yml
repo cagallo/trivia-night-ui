@@ -1,12 +1,24 @@
 version: 2.1
+jobs:
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+          command: >
+            echo "The command above installs Heroku, the command below deploys.
+            What you do inbetween is up to you!"
+      - heroku/deploy-via-git
 orbs:
   cypress: cypress-io/cypress@1
+  heroku: circleci/heroku@1.2.6
 workflows:
-  jobs:
     build:
-      steps:
+      jobs:
         - cypress/run:
             group: 'all tests' # name this group "all tests" on the dashboard
             start: 'npm start' # start server before running tests
-        - deploy:
-            run: 'git push heroku main'
+    heroku_deploy:
+      jobs:
+        - deploy
