@@ -41,12 +41,12 @@ h1 {
   font-size: 20px;
   border: 10px solid black;
   background-color: #fbfbfa80;
-  border-radius: 50%;
+  border-radius: 40%;
   padding: 5px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 18%;
+  height: 31%;
   margin-top: 6%;
   margin-right: 7%;
   margin-left: 500px;
